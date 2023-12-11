@@ -1,0 +1,11 @@
+li {
+  list-style-type: none;
+  border: 5px solid red;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+img {
+  width: 100px;
+}

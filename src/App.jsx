@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+
 import Article from "./components/Article/Article";
 
 function App() {
@@ -7,6 +8,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/:article" element={<Article />} />
+
+
       </Routes>
     </BrowserRouter>
   );
