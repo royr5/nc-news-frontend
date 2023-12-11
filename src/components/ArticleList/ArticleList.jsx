@@ -5,12 +5,18 @@ import { getArticles } from "../../utils/api";
 
 export default function ArticleList() {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getArticles().then((res) => {
       setArticles(res.articles);
+      setIsLoading(false);
     });
   }, [articles]);
+
+  if (isLoading) {
+    return <h2>Loading...</h2>;
+  }
 
   return (
     <>
