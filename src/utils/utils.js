@@ -9,3 +9,9 @@ export const getArticles = () => {
     return data;
   });
 };
+
+export const getSingleArticle = (id) => {
+  return api.get(`/articles/${id}`).then(({ data }) => {
+    return data;
+  });
+};

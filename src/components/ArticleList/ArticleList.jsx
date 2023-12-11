@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { getArticles } from "../";
+import { getArticles } from "../../utils/utils";
 import ArticleCard from "../ArticleCard/ArticleCard";
 
 export default function ArticleList() {
