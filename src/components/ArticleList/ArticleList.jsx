@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { getArticles } from "../utils/api";
 import ArticleCard from "../ArticleCard/ArticleCard";
+import { getArticles } from "../../utils/api";
 
 export default function ArticleList() {
   const [articles, setArticles] = useState([]);
