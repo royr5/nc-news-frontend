@@ -9,3 +9,9 @@ li {
 img {
   width: 100px;
 }
+
+.article-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
