@@ -25,7 +25,7 @@ export const getComments = (id) => {
 export const postComment = (id, body, username) => {
   return api
     .post(`/articles/${id}/comments`, { body, username })
-    .then((res) => {
-      console.log(res);
+    .then(({ data }) => {
+      return data;
     });
 };

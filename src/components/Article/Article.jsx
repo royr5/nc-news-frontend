@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { getSingleArticle } from "../../utils/utils";
 import "./Article.css";
 import CommentList from "../CommentList/CommentList";
-import CommentAdder from "../CommentAdder/CommentAdder";
 
 export default function Article() {
   const { article } = useParams();
@@ -38,7 +37,7 @@ export default function Article() {
           );
         })}
       </ul>
-      <CommentAdder />
+
       <CommentList id={article} />
     </>
   );

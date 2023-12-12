@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getComments } from "../../utils/utils";
 import CommentCard from "../CommentCard/CommentCard";
 import "./CommentList.css";
+import CommentAdder from "../CommentAdder/CommentAdder";
 
 export default function CommentList({ id }) {
   const [comments, setComments] = useState([]);
@@ -26,6 +27,7 @@ export default function CommentList({ id }) {
 
   return (
     <>
+      <CommentAdder id={id} setComments={setComments} />
       <button id="toggle" onClick={toggleComments}>
         {isCommentsHidden ? "Show " : "Hide "}
         comments
