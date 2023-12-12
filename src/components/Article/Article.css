@@ -1,8 +1,10 @@
+
 #articlepage {
   list-style-type: none;
-}
+
 
 img {
+
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -10,7 +12,14 @@ img {
   border-radius: 5px;
 }
 
-h2 {
+#article-content {
+  border: 5px solid red;
+  list-style-type: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#article-content > h2 {
   text-align: center;
 }
 
