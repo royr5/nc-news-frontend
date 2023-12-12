@@ -15,3 +15,9 @@ export const getArticles = () => {
     return data;
   });
 };
+
+export const patchArticle = (id, vote) => {
+  return api.patch(`/articles/${id}`, { inc_votes: vote }).then(({ data }) => {
+    return data;
+  });
+};
