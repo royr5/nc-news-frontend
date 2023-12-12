@@ -7,15 +7,11 @@ export default function ArticleCard({ article, setArticleContent }) {
   const formattedDate = new Date(article.created_at).toLocaleString();
 
   return (
-
     <li id="mainlist">
-
-    <li className="article">
-
       <Link to={`/articles/${article.article_id}`} className="article-link">
         <div>
           <h2>{article.title}</h2>
-          <img src={article.article_img_url} alt="" id="article-img"/>
+          <img src={article.article_img_url} alt="" id="article-img" />
           <p>Topic: {article.topic}</p>
           <p>By {article.author}</p>
           <p>

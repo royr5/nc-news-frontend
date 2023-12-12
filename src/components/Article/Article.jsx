@@ -7,7 +7,6 @@ import ArticleVote from "../ArticleVote/ArticleVote";
 
 import CommentList from "../CommentList/CommentList";
 
-
 export default function Article() {
   const { article } = useParams();
   const [articleContent, setArticleContent] = useState([]);
@@ -29,11 +28,6 @@ export default function Article() {
       <ul>
         {articleContent.map((article) => {
           return (
-
-            <li key={article.article_id} id="articlepage">
-              <h2>{article.title}</h2>
-              <img src={article.article_img_url} alt="" />
-
             <li key={article.article_id} id="article-content">
               <h2>{article.title}</h2>
               <img src={article.article_img_url} alt="" id="article-img" />
@@ -47,11 +41,8 @@ export default function Article() {
           );
         })}
       </ul>
-
       <ArticleVote setArticleContent={setArticleContent} article={article} />
-
       <CommentList id={article} />
-
     </>
   );
 }
