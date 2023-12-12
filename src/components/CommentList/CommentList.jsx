@@ -18,7 +18,7 @@ export default function CommentList({ id }) {
       setComments(res.comments);
       setIsLoading(false);
     });
-  }, [comments]);
+  }, []);
 
   if (isLoading) {
     return <h2 id="loading">Loading...</h2>;
