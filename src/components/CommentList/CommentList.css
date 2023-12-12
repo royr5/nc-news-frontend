@@ -1,0 +1,13 @@
+#comment-heading {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+#toggle {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
