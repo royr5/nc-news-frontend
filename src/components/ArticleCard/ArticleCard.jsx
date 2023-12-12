@@ -1,12 +1,13 @@
 import React from "react";
 import "./ArticleCard.css";
 import { Link } from "react-router-dom";
+import ArticleVote from "../ArticleVote/ArticleVote";
 
-export default function ArticleCard({ article }) {
+export default function ArticleCard({ article, setArticleContent }) {
   const formattedDate = new Date(article.created_at).toLocaleString();
 
   return (
-    <li>
+    <li id="mainlist">
       <Link to={`/articles/${article.article_id}`} className="article-link">
         <div>
           <h2>{article.title}</h2>
@@ -20,6 +21,10 @@ export default function ArticleCard({ article }) {
           <p>Comments: {article.comment_count}</p>
         </div>
       </Link>
+      <ArticleVote
+        setArticleContent={setArticleContent}
+        article={article.article_id}
+      />
     </li>
   );
 }

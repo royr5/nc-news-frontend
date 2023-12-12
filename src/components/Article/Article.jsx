@@ -1,53 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleArticle, patchArticle } from "../../utils/utils";
+import { getSingleArticle } from "../../utils/utils";
 import "./Article.css";
+import ArticleVote from "../ArticleVote/ArticleVote";
 
 export default function Article() {
   const { article } = useParams();
   const [articleContent, setArticleContent] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [vote, setVote] = useState("");
 
   useEffect(() => {
     getSingleArticle(article).then((res) => {
       setArticleContent(res.articles);
       setIsLoading(false);
     });
-  }, [article]);
+  }, []);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
-  }
-
-  function handleUpVote() {
-    patchArticle(article, 1)
-      .then(() => {
-        setArticleContent((prevContent) => {
-          return prevContent.map((article) => {
-            return { ...article, votes: article.votes + 1 };
-          });
-        });
-      })
-      .catch(() => {
-        setVote("err");
-      });
-    setVote("Upvoted");
-  }
-
-  function handleDownVote() {
-    patchArticle(article, -1)
-      .then(() => {
-        setArticleContent((prevContent) => {
-          return prevContent.map((article) => {
-            return { ...article, votes: article.votes - 1 };
-          });
-        });
-      })
-      .catch(() => {
-        setVote("err");
-      });
-    setVote("Downvoted");
   }
 
   return (
@@ -55,7 +25,7 @@ export default function Article() {
       <ul>
         {articleContent.map((article) => {
           return (
-            <li key={article.article_id}>
+            <li key={article.article_id} id="articlepage">
               <h2>{article.title}</h2>
               <img src={article.article_img_url} alt="" />
               <p>Topic: {article.topic}</p>
@@ -67,18 +37,7 @@ export default function Article() {
           );
         })}
       </ul>
-      {vote ? (
-        vote === "err" ? (
-          <p id="msg">Error voting on this article</p>
-        ) : (
-          <p id="msg">You {vote} this article</p>
-        )
-      ) : (
-        <>
-          <button onClick={handleUpVote}>UpVote +1</button>
-          <button onClick={handleDownVote}>DownVote -1</button>
-        </>
-      )}
+      <ArticleVote setArticleContent={setArticleContent} article={article} />
     </>
   );
 }

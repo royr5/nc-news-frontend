@@ -12,7 +12,7 @@ export default function ArticleList() {
       setArticles(res.articles);
       setIsLoading(false);
     });
-  }, [articles]);
+  }, []);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -22,7 +22,13 @@ export default function ArticleList() {
     <>
       <ul>
         {articles.map((article) => {
-          return <ArticleCard article={article} key={article.article_id} />;
+          return (
+            <ArticleCard
+              article={article}
+              key={article.article_id}
+              setArticleContent={setArticles}
+            />
+          );
         })}
       </ul>
     </>

@@ -6,6 +6,10 @@ li {
   padding: 10px 10px 10px 10px;
 }
 
+#mainlist:hover {
+  background-color: #ff474c;
+}
+
 img {
   width: 100px;
 }
