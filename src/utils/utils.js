@@ -16,6 +16,12 @@ export const getArticles = () => {
   });
 };
 
+export const patchArticle = (id, vote) => {
+  return api.patch(`/articles/${id}`, { inc_votes: vote }).then(({ data }) => {
+    return data;
+  });
+};
+
 export const getComments = (id) => {
   return api.get(`/articles/${id}/comments`).then(({ data }) => {
     return data;
