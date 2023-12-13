@@ -27,3 +27,9 @@ export const getComments = (id) => {
     return data;
   });
 };
+
+export const deleteComment = (id) => {
+  return api.delete(`/comments/${id}`).then((res) => {
+    console.log(res);
+  });
+};
