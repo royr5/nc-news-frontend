@@ -9,6 +9,7 @@ export default function CommentList({ id }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isCommentsHidden, setIsCommentsHidden] = useState(true);
+  const [deleteMessage, setDeleteMessage] = useState("");
 
   function toggleComments() {
     setIsCommentsHidden(!isCommentsHidden);
@@ -25,6 +26,12 @@ export default function CommentList({ id }) {
     return <h2 id="loading">Loading...</h2>;
   }
 
+  if (deleteMessage) {
+    setTimeout(() => {
+      setDeleteMessage("");
+    }, 3000);
+  }
+
   return (
     <>
       <CommentAdder id={id} setComments={setComments} />
@@ -36,9 +43,19 @@ export default function CommentList({ id }) {
       {isCommentsHidden ? null : (
         <>
           <h3 id="comment-heading">Comments:</h3>
+          {deleteMessage && (
+            <p className={deleteMessage.type}>{deleteMessage.text}</p>
+          )}
           <ul>
             {comments.map((comment) => {
-              return <CommentCard comment={comment} key={comment.comment_id} />;
+              return (
+                <CommentCard
+                  setComments={setComments}
+                  setDeleteMessage={setDeleteMessage}
+                  comment={comment}
+                  key={comment.comment_id}
+                />
+              );
             })}
           </ul>
         </>
