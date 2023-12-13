@@ -28,6 +28,18 @@ export const getComments = (id) => {
   });
 };
 
+
+export const getTopics = () => {
+  return api.get("/topics").then(({ data }) => {
+    return data;
+  });
+};
+
+export const getArticlesByTopic = (topic) => {
+  return api.get(`/articles?topic=${topic}`).then(({ data }) => {
+    return data;
+  });
+
 export const deleteComment = (id) => {
   return api.delete(`/comments/${id}`).then((res) => {
     console.log(res);
@@ -39,5 +51,5 @@ export const postComment = (id, body, username) => {
     .post(`/articles/${id}/comments`, { body, username })
     .then(({ data }) => {
       return data;
-    });
+
 };
