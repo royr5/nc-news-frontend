@@ -10,10 +10,12 @@ export const getSingleArticle = (id) => {
   });
 };
 
-export const getArticles = () => {
-  return api.get("/articles").then(({ data }) => {
-    return data;
-  });
+export const getArticles = (sort_by = "created_at", order = "DESC") => {
+  return api
+    .get(`/articles?sort_by=${sort_by}&order=${order}`)
+    .then(({ data }) => {
+      return data;
+    });
 };
 
 export const patchArticle = (id, vote) => {
