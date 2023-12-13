@@ -1,17 +1,21 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import { getArticles } from "../../utils/utils";
 
-export default function ArticleList() {
+export default function ArticleList({ topicsArticles }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getArticles().then((res) => {
-      setArticles(res.articles);
+    if (topicsArticles) {
+      setArticles(topicsArticles);
       setIsLoading(false);
-    });
+    } else {
+      getArticles().then((res) => {
+        setArticles(res.articles);
+        setIsLoading(false);
+      });
+    }
   }, []);
 
   if (isLoading) {
@@ -21,15 +25,13 @@ export default function ArticleList() {
   return (
     <>
       <ul>
-        {articles.map((article) => {
-          return (
-            <ArticleCard
-              article={article}
-              key={article.article_id}
-              setArticleContent={setArticles}
-            />
-          );
-        })}
+        {articles.map((article) => (
+          <ArticleCard
+            article={article}
+            key={article.article_id}
+            setArticleContent={setArticles}
+          />
+        ))}
       </ul>
     </>
   );
