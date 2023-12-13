@@ -28,11 +28,11 @@ export const getComments = (id) => {
   });
 };
 
-
 export const deleteComment = (id) => {
   return api.delete(`/comments/${id}`).then((res) => {
     console.log(res);
   });
+};
 
 export const postComment = (id, body, username) => {
   return api
@@ -40,5 +40,4 @@ export const postComment = (id, body, username) => {
     .then(({ data }) => {
       return data;
     });
-
 };
