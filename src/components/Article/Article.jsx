@@ -41,11 +41,7 @@ export default function Article() {
           );
         })}
       </ul>
-
-
-
       <ArticleVote setArticleContent={setArticleContent} article={article} />
-
       <CommentList id={article} />
     </>
   );
