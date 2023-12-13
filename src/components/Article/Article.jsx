@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle } from "../../utils/utils";
 import "./Article.css";
+
+import ArticleVote from "../ArticleVote/ArticleVote";
+
 import CommentList from "../CommentList/CommentList";
 
 export default function Article() {
@@ -14,7 +17,7 @@ export default function Article() {
       setArticleContent(res.articles);
       setIsLoading(false);
     });
-  }, [article]);
+  }, []);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -28,6 +31,7 @@ export default function Article() {
             <li key={article.article_id} id="article-content">
               <h2>{article.title}</h2>
               <img src={article.article_img_url} alt="" id="article-img" />
+
               <p>Topic: {article.topic}</p>
               <p>By {article.author}</p>
               <p>{article.body}</p>
@@ -37,6 +41,10 @@ export default function Article() {
           );
         })}
       </ul>
+
+
+
+      <ArticleVote setArticleContent={setArticleContent} article={article} />
 
       <CommentList id={article} />
     </>
