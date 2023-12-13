@@ -7,7 +7,7 @@ export default function ArticleCard({ article, setArticleContent }) {
   const formattedDate = new Date(article.created_at).toLocaleString();
 
   return (
-    <li id="mainlist">
+    <li id="mainlist" className="hvr-grow">
       <Link to={`/articles/${article.article_id}`} className="article-link">
         <div>
           <h2>{article.title}</h2>

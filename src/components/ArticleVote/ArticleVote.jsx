@@ -2,54 +2,29 @@ import { patchArticle } from "../../utils/utils";
 import { useState } from "react";
 
 export default function ArticleVote({ setArticleContent, article }) {
-  const [vote, setVote] = useState("");
+  const [vote, setVote] = useState(0);
 
-  function handleUpVote() {
+  function handleVote() {
+    const newVote = vote === 0 ? 1 : 0;
+    const voteDiff = newVote - vote;
+
     setArticleContent((prevContent) => {
-      return prevContent.map((article) => {
-        return { ...article, votes: article.votes + 1 };
+      return prevContent.map((prevArticle) => {
+        if (prevArticle.id === article.id) {
+          return { ...prevArticle, votes: prevArticle.votes + voteDiff };
+        }
+        return prevArticle;
       });
     });
 
-    patchArticle(article, 1)
-      .then(() => {
-        setVote("Upvoted");
-      })
-      .catch(() => {
-        setVote("err");
-      });
-  }
-
-  function handleDownVote() {
-    setArticleContent((prevContent) => {
-      return prevContent.map((article) => {
-        return { ...article, votes: article.votes - 1 };
-      });
+    patchArticle(article, voteDiff).then(() => {
+      setVote(newVote);
     });
-
-    patchArticle(article, -1)
-      .then(() => {
-        setVote("Downvoted");
-      })
-      .catch(() => {
-        setVote("err");
-      });
   }
 
   return (
-    <>
-      {vote ? (
-        vote === "err" ? (
-          <p id="msg">Error voting on this article</p>
-        ) : (
-          <p id="msg">You {vote} this article</p>
-        )
-      ) : (
-        <>
-          <button onClick={handleUpVote}>UpVote +1</button>
-          <button onClick={handleDownVote}>DownVote -1</button>
-        </>
-      )}
-    </>
+    <button onClick={handleVote}>
+      {vote === 0 ? "UpVote +1" : "Remove Vote"}
+    </button>
   );
 }
