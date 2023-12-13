@@ -4,6 +4,7 @@ import ArticleList from "./components/ArticleList/ArticleList";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import Article from "./components/Article/Article";
+
 import Topics from "./components/Topics/Topics";
 import TopicsArticles from "./components/TopicsArticles/TopicsArticles";
 
@@ -19,6 +20,22 @@ function App() {
         <Route path="/topics/:topic" element={<TopicsArticles />} />
       </Routes>
     </BrowserRouter>
+
+import { UserProvider } from "./contexts/UserContent";
+
+function App() {
+  return (
+    <UserProvider>
+      <BrowserRouter>
+        <Header />
+        <Nav />
+        <Routes>
+          <Route path="/" element={<ArticleList />} />
+          <Route path="/articles/:article" element={<Article />} />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
+
   );
 }
 
