@@ -27,3 +27,11 @@ export const getComments = (id) => {
     return data;
   });
 };
+
+export const postComment = (id, body, username) => {
+  return api
+    .post(`/articles/${id}/comments`, { body, username })
+    .then(({ data }) => {
+      return data;
+    });
+};
