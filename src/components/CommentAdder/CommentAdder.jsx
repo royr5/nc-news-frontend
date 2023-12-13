@@ -34,6 +34,7 @@ export default function CommentAdder({ id, setComments }) {
           setMsg("Your comment has been posted");
         })
         .catch(() => {
+          setComments((prevComments) => prevComments.slice(1));
           setMsg("Error posting your comment");
         });
     } else {
