@@ -1,18 +1,26 @@
 import { deleteComment } from "../../utils/utils";
 import "./CommentCard.css";
 
-export default function CommentCard({ comment, setComments, setDeleteMessage }) {
+export default function CommentCard({
+  comment,
+  setComments,
+  setDeleteMessage,
+}) {
   const formattedDate = new Date(comment.created_at).toLocaleString();
 
   function handleDelete() {
+    setComments((prevComments) => {
+      return prevComments.filter(
+        (prevComment) => prevComment.comment_id !== comment.comment_id
+      );
+    });
+    
     deleteComment(comment.comment_id)
       .then(() => {
-        setComments((prevComments) => {
-          return prevComments.filter(
-            (prevComment) => prevComment.comment_id !== comment.comment_id
-          );
+        setDeleteMessage({
+          type: "success",
+          text: "Comment deleted successfully",
         });
-        setDeleteMessage({ type: "success", text: "Comment deleted successfully" });
       })
       .catch(() => {
         setDeleteMessage({ type: "error", text: "Error deleting the comment" });
