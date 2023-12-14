@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import { getArticles } from "../../utils/utils";
+import "./ArticleList.css";
+import Search from "../Search/Search";
 
-export default function ArticleList({ topicsArticles }) {
+export default function ArticleList({ topic, topicsArticles }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,6 +26,7 @@ export default function ArticleList({ topicsArticles }) {
 
   return (
     <>
+      <Search topic={topic} setArticles={setArticles} />
       <ul>
         {articles.map((article) => (
           <ArticleCard

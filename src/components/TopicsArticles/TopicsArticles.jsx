@@ -22,7 +22,7 @@ export default function TopicsArticles() {
   return (
     <>
       <h2>Articles on {topic}</h2>
-      <ArticleList topicsArticles={articles} />
+      <ArticleList topic={topic} topicsArticles={articles} />
     </>
   );
 }
