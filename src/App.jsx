@@ -7,6 +7,7 @@ import Article from "./components/Article/Article";
 import { UserProvider } from "./contexts/UserContent";
 import Topics from "./components/Topics/Topics";
 import TopicsArticles from "./components/TopicsArticles/TopicsArticles";
+import Users from "./components/Users/Users";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/articles/:article" element={<Article />} />
           <Route path="/topics" element={<Topics />} />
           <Route path="/topics/:topic" element={<TopicsArticles />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>
