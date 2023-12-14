@@ -1,5 +1,4 @@
 import axios from "axios";
-import Error from "../components/Error/Error";
 
 const api = axios.create({
   baseURL: "https://news-o60m.onrender.com/api",
@@ -19,8 +18,12 @@ export const getSingleArticle = (id) => {
 export const getArticles = (sort_by = "created_at", order = "DESC") => {
   return api
     .get(`/articles?sort_by=${sort_by}&order=${order}`)
-    .then(({ data }) => {
+    .then((res) => {
+      console.log(res);
       return data;
+    })
+    .catch((err) => {
+      throw err;
     });
 };
 

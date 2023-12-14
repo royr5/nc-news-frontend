@@ -1,32 +1,48 @@
 import { useEffect, useState } from "react";
 import { getArticles, getArticlesByTopic } from "../../utils/utils";
 import { useSearchParams } from "react-router-dom";
+import Error from "../Error/Error";
 
 export default function Search({ topic, setArticles }) {
   const [sortByInput, setSortByInput] = useState("created_at");
   const [orderInput, setOrderInput] = useState("DESC");
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setSearchParams({ sort_by: sortByInput, order: orderInput });
   }, [sortByInput, orderInput]);
+
+  console.log(sortByInput);
 
   function handleSubmit(event) {
     setIsLoading(true);
     event.preventDefault();
     setSearchParams({ sort_by: sortByInput, order: orderInput });
     if (topic) {
-      getArticlesByTopic(topic, sortByInput, orderInput).then((res) => {
-        setArticles(res.articles);
-        setIsLoading(false);
-      });
+      getArticlesByTopic(topic, sortByInput, orderInput)
+        .then((res) => {
+          setArticles(res.articles);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setError("Bad request");
+        });
     } else {
-      getArticles(sortByInput, orderInput).then((res) => {
-        setArticles(res.articles);
-        setIsLoading(false);
-      });
+      getArticles(sortByInput, orderInput)
+        .then((res) => {
+          setArticles(res.articles);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setError("Bad request");
+        });
     }
+  }
+
+  if (error) {
+    return <Error message={error} />;
   }
 
   return (
