@@ -59,7 +59,7 @@ export default function Search({ topic, setArticles }) {
             <option value="ASC">Ascending</option>
           </select>
         </label>
-        <button type="submit">Search</button>
+        <button type="submit">Sort Articles</button>
       </form>
       {isLoading ? <h2>Loading...</h2> : null}
     </>
