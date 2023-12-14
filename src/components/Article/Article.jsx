@@ -2,22 +2,30 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle } from "../../utils/utils";
 import "./Article.css";
-
 import ArticleVote from "../ArticleVote/ArticleVote";
-
 import CommentList from "../CommentList/CommentList";
+import Error from "../Error/Error";
 
 export default function Article() {
   const { article } = useParams();
   const [articleContent, setArticleContent] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getSingleArticle(article).then((res) => {
-      setArticleContent(res.articles);
-      setIsLoading(false);
-    });
+    getSingleArticle(article)
+      .then((res) => {
+        setArticleContent(res.articles);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError("Article not found");
+      });
   }, []);
+
+  if (error) {
+    return <Error message={error} />;
+  }
 
   if (isLoading) {
     return <h2>Loading...</h2>;
