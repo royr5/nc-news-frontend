@@ -18,7 +18,6 @@ export default function Users() {
     setErr(false);
     getUsers()
       .then(({ users }) => {
-        console.log(users);
         setUsers(users);
         setIsLoading(false);
       })
