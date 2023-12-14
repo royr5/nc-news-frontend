@@ -1,5 +1,7 @@
 import { deleteComment } from "../../utils/utils";
 import "./CommentCard.css";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContent";
 
 export default function CommentCard({
   comment,
@@ -7,6 +9,7 @@ export default function CommentCard({
   setDeleteMessage,
 }) {
   const formattedDate = new Date(comment.created_at).toLocaleString();
+  const { user } = useContext(UserContext);
 
   function handleDelete() {
     setComments((prevComments) => {
@@ -14,7 +17,7 @@ export default function CommentCard({
         (prevComment) => prevComment.comment_id !== comment.comment_id
       );
     });
-    
+
     deleteComment(comment.comment_id)
       .then(() => {
         setDeleteMessage({
@@ -36,7 +39,7 @@ export default function CommentCard({
           Time: <time dateTime={comment.created_at}>{formattedDate}</time>
         </p>
         <p>Body: {comment.body}</p>
-        {"grumpy19" === comment.author ? (
+        {user === comment.author ? (
           <button onClick={handleDelete}>DELETE COMMENT</button>
         ) : null}
       </li>
