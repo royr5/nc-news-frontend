@@ -13,8 +13,7 @@ This README provides information on how to use the app, deploy it, and run it lo
 You can access the deployed version of NC News [here](https://nc-news-roshan.netlify.app/).
 
 ## Backend Repository
-
-To explore the backend of NC News, visit the [backend repository](https://github.com/royr5/nc-news).
+You can access the backend repository [here](https://github.com/royr5/nc-news).
 
 ## Local Development
 
@@ -42,8 +41,8 @@ npm run dev
 
 ## Project Structure
 
-- `src`: Contains the source code of the React application.
-  - `components`: Various React components used in the app.
+- `src`: Contains the source code of the React app.
+  - `components`: React components used in the app.
   - `contexts`: Context providers for managing user data.
   - `utils`: Utility functions for interacting with the backend API.
 - `index.css` and `main.jsx`: Entry point files for styling and rendering the app.
