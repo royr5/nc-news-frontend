@@ -6,14 +6,15 @@
 
 Welcome to NC News, a website that allows users to read, vote, and comment on articles. The app has several features, including viewing articles by topic, reading individual articles, voting on articles, posting and deleting comments, sorting articles, and logging in as a dummy user.
 
-This README provides information on how to use the app, deploy it, and run it locally.
-
 ## Deployed Version
 
 You can access the deployed version of NC News [here](https://nc-news-roshan.netlify.app/).
 
 ## Backend Repository
+
 You can access the backend repository [here](https://github.com/royr5/nc-news).
+
+Access the API [here](https://news-o60m.onrender.com/api).
 
 ## Local Development
 
