@@ -10,7 +10,7 @@ This README provides information on how to use the app, deploy it, and run it lo
 
 ## Deployed Version
 
-You can access the deployed version of NC News [here]().
+You can access the deployed version of NC News [here](https://nc-news-roshan.netlify.app/).
 
 ## Backend Repository
 
