@@ -36,10 +36,16 @@ export const getTopics = () => {
   });
 };
 
-export const getArticlesByTopic = (topic) => {
-  return api.get(`/articles?topic=${topic}`).then(({ data }) => {
-    return data;
-  });
+export const getArticlesByTopic = (
+  topic,
+  sort_by = "created_at",
+  order = "DESC"
+) => {
+  return api
+    .get(`/articles?topic=${topic}&sort_by=${sort_by}&order=${order}`)
+    .then(({ data }) => {
+      return data;
+    });
 };
 
 export const deleteComment = (id) => {
