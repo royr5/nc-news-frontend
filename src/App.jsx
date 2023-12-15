@@ -22,7 +22,7 @@ function App() {
           <Route path="/topics" element={<Topics />} />
           <Route path="/topics/:topic" element={<TopicsArticles />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/*" element={<Error message="Route not found" />} />
+          <Route path="/*" element={<Error message="Page not found" />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>
