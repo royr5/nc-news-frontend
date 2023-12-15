@@ -5,9 +5,14 @@ const api = axios.create({
 });
 
 export const getSingleArticle = (id) => {
-  return api.get(`/articles/${id}`).then(({ data }) => {
-    return data;
-  });
+  return api
+    .get(`/articles/${id}`)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((err) => {
+      throw err;
+    });
 };
 
 export const getArticles = (sort_by = "created_at", order = "DESC") => {
@@ -15,6 +20,9 @@ export const getArticles = (sort_by = "created_at", order = "DESC") => {
     .get(`/articles?sort_by=${sort_by}&order=${order}`)
     .then(({ data }) => {
       return data;
+    })
+    .catch((err) => {
+      throw err;
     });
 };
 
@@ -45,6 +53,9 @@ export const getArticlesByTopic = (
     .get(`/articles?topic=${topic}&sort_by=${sort_by}&order=${order}`)
     .then(({ data }) => {
       return data;
+    })
+    .catch((err) => {
+      throw err;
     });
 };
 

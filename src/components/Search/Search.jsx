@@ -1,28 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getArticles, getArticlesByTopic } from "../../utils/utils";
 import { useSearchParams } from "react-router-dom";
 
 export default function Search({ topic, setArticles }) {
-  const [sortByInput, setSortByInput] = useState("created_at");
-  const [orderInput, setOrderInput] = useState("DESC");
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setSearchParams({ sort_by: sortByInput, order: orderInput });
-  }, [sortByInput, orderInput]);
+  let sort_by = searchParams.get("sort_by") || "created_at";
+  let order = searchParams.get("order") || "DESC";
 
   function handleSubmit(event) {
     setIsLoading(true);
     event.preventDefault();
-    setSearchParams({ sort_by: sortByInput, order: orderInput });
     if (topic) {
-      getArticlesByTopic(topic, sortByInput, orderInput).then((res) => {
+      getArticlesByTopic(topic, sort_by, order).then((res) => {
         setArticles(res.articles);
         setIsLoading(false);
       });
     } else {
-      getArticles(sortByInput, orderInput).then((res) => {
+      getArticles(sort_by, order).then((res) => {
         setArticles(res.articles);
         setIsLoading(false);
       });
@@ -36,9 +32,9 @@ export default function Search({ topic, setArticles }) {
           Sort By:{" "}
           <select
             id="sortby"
-            value={sortByInput}
+            value={sort_by}
             onChange={(event) => {
-              setSortByInput(event.target.value);
+              setSearchParams({ sort_by: event.target.value, order });
             }}
           >
             <option value="created_at">Date</option>
@@ -50,9 +46,9 @@ export default function Search({ topic, setArticles }) {
           Order:{" "}
           <select
             id="orderby"
-            value={orderInput}
+            value={order}
             onChange={(event) => {
-              setOrderInput(event.target.value);
+              setSearchParams({ sort_by, order: event.target.value });
             }}
           >
             <option value="DESC">Descending</option>

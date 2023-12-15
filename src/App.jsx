@@ -8,6 +8,7 @@ import { UserProvider } from "./contexts/UserContent";
 import Topics from "./components/Topics/Topics";
 import TopicsArticles from "./components/TopicsArticles/TopicsArticles";
 import Users from "./components/Users/Users";
+import Error from "./components/Error/Error";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/topics" element={<Topics />} />
           <Route path="/topics/:topic" element={<TopicsArticles />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/*" element={<Error message="Page not found" />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>

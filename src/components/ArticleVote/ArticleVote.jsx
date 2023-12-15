@@ -10,10 +10,7 @@ export default function ArticleVote({ setArticleContent, article }) {
 
     setArticleContent((prevContent) => {
       return prevContent.map((prevArticle) => {
-        if (prevArticle.article_id === article) {
-          return { ...prevArticle, votes: prevArticle.votes + voteDiff };
-        }
-        return prevArticle;
+        return { ...prevArticle, votes: prevArticle.votes + voteDiff };
       });
     });
 
