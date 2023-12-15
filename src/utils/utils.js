@@ -18,8 +18,7 @@ export const getSingleArticle = (id) => {
 export const getArticles = (sort_by = "created_at", order = "DESC") => {
   return api
     .get(`/articles?sort_by=${sort_by}&order=${order}`)
-    .then((res) => {
-      console.log(res);
+    .then(({ data }) => {
       return data;
     })
     .catch((err) => {
