@@ -1,7 +1,4 @@
-nav {
-  text-align: center;
-}
-
-.link {
-  margin: 10px;
+.nav-container {
+  display: flex;
+  justify-content: center;
 }

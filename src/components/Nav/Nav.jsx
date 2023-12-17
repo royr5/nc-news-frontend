@@ -1,17 +1,29 @@
-import { Link } from "react-router-dom";
+import React from "react";
 import "./Nav.css";
-export default function Nav() {
+import Nav from "react-bootstrap/Nav";
+
+export default function Navigation() {
+  const linkStyle = { color: "rgb(190, 0, 44)" };
+
   return (
-    <nav>
-      <Link to="/" className="link">
-        Home
-      </Link>
-      <Link to="/topics" className="link">
-        Topics
-      </Link>
-      <Link to="/users" className="link">
-        Users
-      </Link>
-    </nav>
+    <div className="nav-container">
+      <Nav variant="underline">
+        <Nav.Item>
+          <Nav.Link href="/" style={linkStyle}>
+            Home
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/topics" style={linkStyle}>
+            Topics
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/users" style={linkStyle}>
+            Users
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+    </div>
   );
 }
