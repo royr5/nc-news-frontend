@@ -32,47 +32,48 @@ export default function Search({ topic, setArticles }) {
   }
 
   return (
-    <div className="form-container">
-      <Form onSubmit={handleSubmit}>
-        <Row className="g-2">
-          <Col md>
-            <FloatingLabel controlId="floatingSelect" label="Sort By:">
-              <Form.Select
-                id="sortby"
-                value={sort_by}
-                onChange={(event) => {
-                  setSearchParams({ sort_by: event.target.value, order });
-                }}
-                size="sm"
-              >
-                <option value="created_at">Date</option>
-                <option value="comment_count">Comments</option>
-                <option value="votes">Votes</option>
-              </Form.Select>
-            </FloatingLabel>
-          </Col>
-          <Col md>
-            <FloatingLabel controlId="floatingSelect" label="Order:">
-              <Form.Select
-                id="orderby"
-                value={order}
-                onChange={(event) => {
-                  setSearchParams({ sort_by, order: event.target.value });
-                }}
-                size="sm"
-              >
-                <option value="DESC">Descending</option>
-                <option value="ASC">Ascending</option>
-              </Form.Select>
-            </FloatingLabel>
-          </Col>
+    <>
+      <div className="form-container">
+        <Form inline onSubmit={handleSubmit}>
+          <Row className="g-2">
+            <Col md>
+              <FloatingLabel controlId="floatingSelect" label="Sort By:">
+                <Form.Select
+                  id="sortby"
+                  value={sort_by}
+                  onChange={(event) => {
+                    setSearchParams({ sort_by: event.target.value, order });
+                  }}
+                  size="sm"
+                >
+                  <option value="created_at">Date</option>
+                  <option value="comment_count">Comments</option>
+                  <option value="votes">Votes</option>
+                </Form.Select>
+              </FloatingLabel>
+            </Col>
+            <Col md>
+              <FloatingLabel controlId="floatingSelect" label="Order:">
+                <Form.Select
+                  id="orderby"
+                  value={order}
+                  onChange={(event) => {
+                    setSearchParams({ sort_by, order: event.target.value });
+                  }}
+                  size="sm"
+                >
+                  <option value="DESC">Descending</option>
+                  <option value="ASC">Ascending</option>
+                </Form.Select>
+              </FloatingLabel>
+            </Col>
 
-          <Button type="submit" size="sm" variant="dark">
-            Sort Articles
-          </Button>
-        </Row>
-      </Form>
-      {isLoading ? <h2>Loading...</h2> : null}
-    </div>
+            <Button type="submit" variant="primary" disabled={isLoading}>
+              {isLoading ? "Loading…" : "Sort Articles"}
+            </Button>
+          </Row>
+        </Form>
+      </div>
+    </>
   );
 }
