@@ -1,0 +1,31 @@
+.user-container {
+  margin: 5%;
+}
+
+#user-desc {
+  text-align: center;
+}
+
+.user-card {
+  max-width: 75%;
+  margin: 5% auto;
+  padding: 5%;
+  cursor: pointer;
+}
+
+#users-list {
+  justify-content: center;
+}
+
+.user-card:hover .p-2 {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+.user-info {
+  margin-bottom: 10px;
+}
+
+#current-user {
+  text-align: center;
+}

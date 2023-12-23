@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import { getUsers } from "../../utils/utils";
 import { UserContext } from "../../contexts/UserContent";
 import { useContext } from "react";
+import "./Users.css";
+import Spinner from "react-bootstrap/Spinner";
+import { Card, CardGroup } from "react-bootstrap";
+import { Badge } from "react-bootstrap";
+import Stack from "react-bootstrap/Stack";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState(null);
   const { setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   function handleAvatarClick(username) {
     setUser(username);
@@ -27,8 +33,6 @@ export default function Users() {
       });
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
-
   if (err)
     return (
       <div>
@@ -39,27 +43,40 @@ export default function Users() {
     );
 
   return (
-    <div>
-      <h1>Users</h1>
-      <p>Click on a users image to log in</p>
-      <ul>
-        {users.map((user) => {
-          return (
-            <li key={user.username}>
-              <p>username: {user.username}</p>
-              <p>Name: {user.name}</p>
-              <img
-                src={user.avatar_url}
-                alt=""
-                width="100"
+    <div className="user-container">
+      <h2>Users</h2>
+      <p id="user-desc">Click on a users image to log in</p>
+      {isLoading ? (
+        <Spinner animation="border" variant="primary" className="spinner" />
+      ) : null}
+      <p id="current-user">
+        Hello <Badge bg="dark">{user}</Badge> !
+      </p>
+
+      <CardGroup id="users-list">
+        <ul>
+          {users.map((user) => {
+            return (
+              <Card
+                className="user-card"
                 onClick={() => {
                   handleAvatarClick(user.username);
                 }}
-              />
-            </li>
-          );
-        })}
-      </ul>
+              >
+                <Stack className="user-info" direction="horizontal" gap={3}>
+                  <div className="p-2">{user.name}</div>
+                  <div className="p-2 ms-auto">
+                    {" "}
+                    <Badge>{user.username}</Badge>
+                  </div>
+                </Stack>
+
+                <Card.Img src={user.avatar_url} />
+              </Card>
+            );
+          })}
+        </ul>
+      </CardGroup>
     </div>
   );
 }
