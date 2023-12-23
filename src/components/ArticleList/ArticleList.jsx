@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import { getArticles } from "../../utils/utils";
-import "./ArticleList.css";
 import Search from "../Search/Search";
 
 export default function ArticleList({ topic, topicsArticles }) {

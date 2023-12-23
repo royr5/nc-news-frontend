@@ -11,7 +11,7 @@ export default function ArticleCard({ article, setArticleContent }) {
       <Link to={`/articles/${article.article_id}`} className="article-link">
         <div>
           <h2>{article.title}</h2>
-          <img src={article.article_img_url} alt="" id="article-img" />
+          <img src={article.article_img_url} alt="" id="article-img" width={100}/>
           <p>Topic: {article.topic}</p>
           <p>By {article.author}</p>
           <p>

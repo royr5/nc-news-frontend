@@ -1,29 +1,45 @@
 import React from "react";
-import "./Nav.css";
 import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContent";
 
 export default function Navigation() {
-  const linkStyle = { color: "rgb(190, 0, 44)" };
+  const { user } = useContext(UserContext);
 
   return (
-    <div className="nav-container">
-      <Nav variant="underline">
-        <Nav.Item>
-          <Nav.Link href="/" style={linkStyle}>
-            Home
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/topics" style={linkStyle}>
-            Topics
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/users" style={linkStyle}>
-            Users
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-    </div>
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      sticky="top"
+      bg="primary"
+      data-bs-theme="dark"
+    >
+      <Container>
+        <Navbar.Brand href="/">
+          <img
+            alt=""
+            src="newspaper.svg"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{" "}
+          NC News
+        </Navbar.Brand>
+
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Nav className="me-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/topics">Topics</Nav.Link>
+            <Nav.Link href="/users">Users</Nav.Link>
+          </Nav>
+          <Navbar.Text>
+            Signed in as: <a href="/users">{user}</a>
+          </Navbar.Text>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
