@@ -56,24 +56,24 @@ export default function Users() {
 
       <CardGroup id="users-list">
         <ul>
-          {users.map((user, index) => {
+          {users.map((person, index) => {
             return (
               <Card
                 key={index}
                 className="user-card"
                 onClick={() => {
-                  handleAvatarClick(user.username);
+                  handleAvatarClick(person.username);
                 }}
               >
                 <Stack className="user-info" direction="horizontal" gap={3}>
-                  <div className="p-2">{user.name}</div>
+                  <div className="p-2">{person.name}</div>
                   <div className="p-2 ms-auto">
                     {" "}
-                    <Badge>{user.username}</Badge>
+                    <Badge>{person.username}</Badge>
                   </div>
                 </Stack>
 
-                <Card.Img src={user.avatar_url} />
+                <Card.Img src={person.avatar_url} />
               </Card>
             );
           })}
