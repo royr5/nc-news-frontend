@@ -8,12 +8,14 @@ import Topics from "./components/Topics/Topics";
 import TopicsArticles from "./components/TopicsArticles/TopicsArticles";
 import Users from "./components/Users/Users";
 import Error from "./components/Error/Error";
+import Popup from "./components/Popup/Popup";
 
 function App() {
   return (
     <UserProvider>
       <BrowserRouter>
         <Nav />
+        <Popup />
         <Routes>
           <Route path="/" element={<ArticleList />} />
           <Route path="/articles/:article" element={<Article />} />
