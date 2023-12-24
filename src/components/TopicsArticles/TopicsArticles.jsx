@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { getArticlesByTopic } from "../../utils/utils";
 import ArticleList from "../ArticleList/ArticleList";
 import Error from "../Error/Error";
+import "./TopicsArticles.css";
+import Spinner from "react-bootstrap/Spinner";
 
 export default function TopicsArticles() {
   const { topic } = useParams();
@@ -25,14 +27,15 @@ export default function TopicsArticles() {
     return <Error message={error} />;
   }
 
-  if (isLoading) {
-    return <h2>Loading...</h2>;
-  }
-
   return (
     <>
-      <h2>Articles on {topic}</h2>
-      <ArticleList topic={topic} topicsArticles={articles} />
+      <h2 id="topic-heading">Articles on {topic}</h2>
+
+      {isLoading ? (
+        <Spinner animation="border" variant="primary" className="spinner" />
+      ) : (
+        <ArticleList topic={topic} topicsArticles={articles} />
+      )}
     </>
   );
 }
