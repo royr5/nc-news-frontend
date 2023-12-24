@@ -7,6 +7,7 @@ export default function ArticleVote({ setArticleContent, article }) {
   const [vote, setVote] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
+
   function handleVote() {
     setIsLoading(true);
 
@@ -15,7 +16,10 @@ export default function ArticleVote({ setArticleContent, article }) {
 
     setArticleContent((prevContent) => {
       return prevContent.map((prevArticle) => {
-        return { ...prevArticle, votes: prevArticle.votes + voteDiff };
+        if (prevArticle.article_id === article) {
+          return { ...prevArticle, votes: prevArticle.votes + voteDiff };
+        }
+        return prevArticle;
       });
     });
 

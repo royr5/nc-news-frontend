@@ -71,7 +71,7 @@ export default function Article() {
                 </Card.Body>
                 <ArticleVote
                   setArticleContent={setArticleContent}
-                  article={article}
+                  article={article.article_id}
                 />
               </Card>
             </div>
