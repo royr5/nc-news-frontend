@@ -8,6 +8,7 @@ import { UserContext } from "../../contexts/UserContent";
 export default function Navigation() {
   const { user } = useContext(UserContext);
 
+
   return (
     <Navbar
       collapseOnSelect

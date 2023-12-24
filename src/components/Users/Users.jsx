@@ -12,8 +12,7 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState(null);
-  const { setUser } = useContext(UserContext);
-  const { user } = useContext(UserContext);
+  const { setUser, user } = useContext(UserContext);
 
   function handleAvatarClick(username) {
     setUser(username);
