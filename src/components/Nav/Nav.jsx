@@ -19,7 +19,7 @@ export default function Navigation() {
       <Container>
         <Navbar.Brand href="/">
           <img
-            alt=""
+            alt="logo"
             src="newspaper.svg"
             width="30"
             height="30"

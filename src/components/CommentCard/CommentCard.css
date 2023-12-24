@@ -1,7 +1,4 @@
-.comments {
-  list-style-type: none;
-  border: 2px solid blue;
-  border-radius: 5px;
-  padding: 5px;
-  margin-top: 5px;
+.comments-card {
+  margin: 1%;
+  padding: 2%;
 }

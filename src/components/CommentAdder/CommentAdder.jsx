@@ -3,6 +3,7 @@ import "./CommentAdder.css";
 import { postComment } from "../../utils/utils";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContent";
+import { Button, Form } from "react-bootstrap";
 
 export default function CommentAdder({ id, setComments }) {
   const [newComment, setNewComment] = useState("");
@@ -42,22 +43,26 @@ export default function CommentAdder({ id, setComments }) {
     }
   }
 
+  if (msg) {
+    setTimeout(() => {
+      setMsg("");
+    }, 3000);
+  }
+
   return (
-    <>
-      <form onSubmit={handleSubmit} id="form">
-        <label htmlFor="comment">
-          Add a Comment:
-          <textarea
-            onChange={handleInput}
-            value={newComment}
-            id="comment"
-            rows="4"
-            cols="50"
-          ></textarea>
-        </label>
-        <button type="submit">Post comment</button>
-        <p id="msg">{msg}</p>
-      </form>
-    </>
+    <Form onSubmit={handleSubmit} id="form">
+      <Form.Label>Share your thoughts:</Form.Label>
+      <Form.Control
+        as="textarea"
+        rows={3}
+        onChange={handleInput}
+        value={newComment}
+        id="comment"
+      />
+      <Button id="comment-btn" type="submit">
+        Post comment
+      </Button>
+      <p id="msg">{msg}</p>
+    </Form>
   );
 }
