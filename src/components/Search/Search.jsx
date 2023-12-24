@@ -34,7 +34,7 @@ export default function Search({ topic, setArticles }) {
   return (
     <>
       <div className="form-container">
-        <Form inline onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <Row className="g-2">
             <Col md>
               <FloatingLabel controlId="floatingSelect" label="Sort By:">

@@ -28,12 +28,8 @@ export default function ArticleList({ topic, topicsArticles }) {
 
       <CardGroup id="article-list">
         {articles.map((article) => (
-          <ul>
-            <ArticleCard
-              article={article}
-              key={article.article_id}
-              setArticleContent={setArticles}
-            />
+          <ul key={article.article_id}>
+            <ArticleCard article={article} setArticleContent={setArticles} />
           </ul>
         ))}
       </CardGroup>

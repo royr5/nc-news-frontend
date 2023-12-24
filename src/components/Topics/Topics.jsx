@@ -18,7 +18,7 @@ export default function Topics() {
 
   return (
     <div className="topic-container">
-      <h2>All Topics</h2>
+      <h2 id="topic-heading">All Topics</h2>
 
       {isLoading ? (
         <Spinner animation="border" variant="primary" className="spinner" />

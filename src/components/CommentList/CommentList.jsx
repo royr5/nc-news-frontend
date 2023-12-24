@@ -26,7 +26,7 @@ export default function CommentList({ id, commentCount }) {
 
   return (
     <>
-      <h3 id="comment-heading">{commentCount} Comments</h3>
+      <h4 id="comment-heading">{commentCount} Comments</h4>
 
       <CommentAdder id={id} setComments={setComments} />
 

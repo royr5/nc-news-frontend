@@ -44,7 +44,7 @@ export default function Users() {
 
   return (
     <div className="user-container">
-      <h2>Users</h2>
+      <h2 id="user-heading">Users</h2>
       <p id="user-desc">Click on a users image to log in</p>
       <p id="current-user">
         Hello <Badge bg="dark">{user}</Badge> !
@@ -56,9 +56,10 @@ export default function Users() {
 
       <CardGroup id="users-list">
         <ul>
-          {users.map((user) => {
+          {users.map((user, index) => {
             return (
               <Card
+                key={index}
                 className="user-card"
                 onClick={() => {
                   handleAvatarClick(user.username);

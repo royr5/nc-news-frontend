@@ -20,7 +20,7 @@ export default function Navigation() {
         <Navbar.Brand href="/">
           <img
             alt="logo"
-            src="newspaper.svg"
+            src="../../../newspaper.svg"
             width="30"
             height="30"
             className="d-inline-block align-top"
