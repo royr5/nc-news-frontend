@@ -46,12 +46,13 @@ export default function Users() {
     <div className="user-container">
       <h2>Users</h2>
       <p id="user-desc">Click on a users image to log in</p>
-      {isLoading ? (
-        <Spinner animation="border" variant="primary" className="spinner" />
-      ) : null}
       <p id="current-user">
         Hello <Badge bg="dark">{user}</Badge> !
       </p>
+
+      {isLoading ? (
+        <Spinner animation="border" variant="primary" className="spinner" />
+      ) : null}
 
       <CardGroup id="users-list">
         <ul>
