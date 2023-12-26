@@ -21,7 +21,7 @@ export default function ArticleCard({ article, setArticleContent }) {
   return (
     <Card style={{ width: "18rem", height: "28rem" }}>
       <Link to={`/articles/${article.article_id}`} className="article-link">
-        <Card.Img variant="top" src={article.article_img_url} />
+        <Card.Img variant="top" src={article.article_img_url} alt="" />
         <Card.Body>
           <Card.Title className="article-title">{article.title}</Card.Title>
 

@@ -42,6 +42,7 @@ export default function Article() {
                   className="article-img"
                   variant="top"
                   src={article.article_img_url}
+                  alt=""
                 />
                 <Card.Body>
                   <Stack direction="horizontal" gap={3}>
