@@ -5,6 +5,7 @@ import Search from "../Search/Search";
 import Spinner from "react-bootstrap/Spinner";
 import "./ArticleList.css";
 import { CardGroup } from "react-bootstrap";
+import Hero from "../Hero/Hero";
 
 export default function ArticleList({ topic, topicsArticles }) {
   const [articles, setArticles] = useState([]);
@@ -24,8 +25,8 @@ export default function ArticleList({ topic, topicsArticles }) {
 
   return (
     <>
+      {topic ? null : <Hero />}
       <Search topic={topic} setArticles={setArticles} />
-
       <CardGroup id="article-list">
         {articles.map((article) => (
           <ul key={article.article_id}>
