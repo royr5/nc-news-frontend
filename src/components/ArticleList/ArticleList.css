@@ -11,6 +11,9 @@
 
 @media (max-width: 767px) {
   #article-list {
-    margin-left: 10px;
+    margin-right: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
