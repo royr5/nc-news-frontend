@@ -37,7 +37,7 @@ export default function CommentList({ id, commentCount }) {
       {isLoading ? (
         <Spinner animation="border" variant="primary" className="spinner" />
       ) : (
-        <ul>
+        <>
           {comments.map((comment) => (
             <CommentCard
               key={comment.comment_id}
@@ -46,7 +46,7 @@ export default function CommentList({ id, commentCount }) {
               comment={comment}
             />
           ))}
-        </ul>
+        </>
       )}
     </>
   );
