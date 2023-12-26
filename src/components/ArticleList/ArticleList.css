@@ -8,3 +8,9 @@
 #article-list {
   justify-content: center;
 }
+
+@media (max-width: 767px) {
+  #article-list {
+    margin-left: 10px;
+  }
+}
