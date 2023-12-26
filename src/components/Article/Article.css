@@ -22,3 +22,9 @@
   max-width: 90%;
   margin: 0 auto;
 }
+
+@media (min-width: 992px) {
+  .article-card-container {
+    max-width: 70%;
+  }
+}
