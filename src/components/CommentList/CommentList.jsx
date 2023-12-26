@@ -10,6 +10,7 @@ export default function CommentList({ id, commentCount }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [deleteMessage, setDeleteMessage] = useState("");
+  const [totalComments, setTotalComments] = useState(commentCount);
 
   useEffect(() => {
     getComments(id).then((res) => {
@@ -26,9 +27,13 @@ export default function CommentList({ id, commentCount }) {
 
   return (
     <>
-      <h4 id="comment-heading">{commentCount} Comments</h4>
+      <CommentAdder
+        id={id}
+        setComments={setComments}
+        setTotalComments={setTotalComments}
+      />
 
-      <CommentAdder id={id} setComments={setComments} />
+      <h4 id="comment-heading">{totalComments} Comments</h4>
 
       {deleteMessage && (
         <p className={deleteMessage.type}>{deleteMessage.text}</p>
@@ -44,6 +49,7 @@ export default function CommentList({ id, commentCount }) {
               setComments={setComments}
               setDeleteMessage={setDeleteMessage}
               comment={comment}
+              setTotalComments={setTotalComments}
             />
           ))}
         </div>

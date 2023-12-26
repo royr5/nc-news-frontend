@@ -8,6 +8,7 @@ export default function CommentCard({
   comment,
   setComments,
   setDeleteMessage,
+  setTotalComments,
 }) {
   const options = {
     year: "numeric",
@@ -27,6 +28,10 @@ export default function CommentCard({
       return prevComments.filter(
         (prevComment) => prevComment.comment_id !== comment.comment_id
       );
+    });
+
+    setTotalComments((prevTotalComments) => {
+      return prevTotalComments - 1;
     });
 
     deleteComment(comment.comment_id)

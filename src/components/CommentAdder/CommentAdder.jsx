@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContent";
 import { Button, Form } from "react-bootstrap";
 
-export default function CommentAdder({ id, setComments }) {
+export default function CommentAdder({ id, setComments, setTotalComments }) {
   const [newComment, setNewComment] = useState("");
   const [msg, setMsg] = useState("");
   const { user } = useContext(UserContext);
@@ -28,6 +28,10 @@ export default function CommentAdder({ id, setComments }) {
         },
         ...prevComments,
       ]);
+
+      setTotalComments((prevTotalComments) => {
+        return prevTotalComments + 1;
+      });
 
       postComment(id, newComment, user)
         .then(() => {
