@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContent";
 
 export default function Navigation() {
@@ -17,7 +18,7 @@ export default function Navigation() {
       data-bs-theme="dark"
     >
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand as={Link} to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="25"
@@ -35,12 +36,18 @@ export default function Navigation() {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/topics">Topics</Nav.Link>
-            <Nav.Link href="/users">Users</Nav.Link>
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/topics">
+              Topics
+            </Nav.Link>
+            <Nav.Link as={Link} to="/users">
+              Users
+            </Nav.Link>
           </Nav>
           <Navbar.Text>
-            Signed in as: <a href="/users">{user}</a>
+            Signed in as: <Link to="/users">{user}</Link>
           </Navbar.Text>
         </Navbar.Collapse>
       </Container>
